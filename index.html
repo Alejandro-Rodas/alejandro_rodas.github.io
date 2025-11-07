@@ -1198,26 +1198,41 @@
   -->
 
   <script src="./assets/js/script.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-  emailjs.init("6Uk8JiV88fZ219_-5");
-  document.getElementById('contactForm').addEventListener('submit', function (e) {
+  // IDs — use exactly these
+  const PUBLIC_KEY   = "6Uk8JiV88fZ219_-5";
+  const SERVICE_ID   = "service_lln0ncu";
+  const TEMPLATE_ME  = "template_3ivz9mn";  // notify you
+  const TEMPLATE_USER= "template_fnent9p";  // auto-reply to sender
+
+  emailjs.init(PUBLIC_KEY);
+
+  document.getElementById('contactForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const f = e.target;
-    const payload = {
+
+    const vars = {
       fullname: f.fullname.value,
-      reply_to: f.email.value,
+      reply_to: f.email.value,   // map to {{reply_to}} in templates
       message:  f.message.value
     };
-    emailjs.send("service_lln0ncu","template_3ivz9mn",payload)
-      .then(()=>{ f.reset(); alert("Sent!"); })
-      .catch(err=>{
-        console.error('EmailJS:', err);           // open DevTools → Console to read
-        alert((err?.text)|| (err?.message) || "Send failed.");
-      });
+
+    try {
+      // 1) notify you
+      await emailjs.send(SERVICE_ID, TEMPLATE_ME, vars);
+      // 2) auto-reply to the sender
+      await emailjs.send(SERVICE_ID, TEMPLATE_USER, vars);
+
+      f.reset();
+      alert("Thanks! Message sent.");
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      alert((err && (err.text || err.message)) || "Send failed. Check EmailJS IDs/keys.");
+    }
   });
 </script>
+
 
 
 </body>
