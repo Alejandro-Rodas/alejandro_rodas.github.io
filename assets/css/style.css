@@ -1878,6 +1878,11 @@ textarea.form-input::-webkit-resizer { display: none; }
 	 */
 
   .timeline-text { max-width: 700px; }
+.resume .timeline-sub{
+  color: var(--light-gray) !important;
+  font-size: 0.9rem;
+  margin: -6px 0 6px;
+}
 
 
 }
