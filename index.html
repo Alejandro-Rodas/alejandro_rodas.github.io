@@ -1167,22 +1167,16 @@
 
           <h3 class="h3 form-title">Contact Form</h3>
 
-        <form action="mailto:alejandro.rodas.1944@gmail.com?subject=Website%20Contact"
-      method="post" enctype="text/plain" class="form">
-            <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
-            </div>
-
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-
-            <button class="form-btn" type="submit" data-form-btn>
-              <ion-icon name="paper-plane"></ion-icon>
-              <span>Send Message</span>
-            </button>
-
-          </form>
+      <form id="contactForm" class="form">
+  <div class="input-wrapper">
+    <input name="fullname" class="form-input" placeholder="Full name" required>
+    <input type="email" name="email" class="form-input" placeholder="Email address" required>
+  </div>
+  <textarea name="message" class="form-input" placeholder="Your Message" required></textarea>
+  <button class="form-btn" type="submit">
+    <ion-icon name="paper-plane"></ion-icon><span>Send Message</span>
+  </button>
+</form>
 
         </section>
 
@@ -1207,7 +1201,20 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  emailjs.init("YOUR_PUBLIC_KEY");
+  document.getElementById('contactForm').addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    await emailjs.send("SERVICE_ID","TEMPLATE_ID",{
+      fullname: e.target.fullname.value,
+      reply_to: e.target.email.value,
+      message: e.target.message.value
+    });
+    e.target.reset();
+    alert("Thanks! Your message was sent.");
+  });
+</script>
 </body>
 
 </html>
