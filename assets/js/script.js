@@ -133,4 +133,14 @@ for (let i = 0; i < navigationLinks.length; i++) {
     }
 
   });
+
+  const items = document.querySelectorAll('[data-filter-item]');
+function applyFilter(selected) {
+  const showAll = selected === 'all';
+  items.forEach(it => {
+    const match = showAll || it.dataset.category === selected;
+    const hideInAll = showAll && it.hasAttribute('data-exclude-all');
+    it.classList.toggle('active', match && !hideInAll);
+  });
+}
 }
