@@ -193,7 +193,7 @@
   <p>My work spans statistical inference, machine learning, causal modeling, large-scale data processing and databases with a strong foundation in advanced statistical methods, programming, database systems, data analysis and ML.</p>
   <p>I’ve worked and collaborated for Berkeley’s Financial Office, the U.S. Department of Health and Human Services, and Mathematica Inc. I’ve also collaborated with Open Project at Berkeley and led a research team through Berkeley’s Discovery Research Program.</p>
   <p>Besides programming and math, I love to watch F.C. Barcelona and play soccer with friends, I love the New York Yankees (dad left me no choice). 
-  I enjoyed reading since I was a kid; my favorites books are "The Feast of the Goat" by Mario Vargas Llosa (my favorite writer),and "The Great Gatsby" by F. Scott Fitzgerald. 
+  I enjoyed reading since I was a kid; my favorites books are "The Feast of the Goat" by Mario Vargas Llosa (my favorite writer), and "The Great Gatsby" by F. Scott Fitzgerald. 
   I love to watch movies; some of my favorites are "Y tu mamá también", "Before Sunrise" and the Godfather trilogy. My favorite artists are: Queen, The 1975, Residente and The Smiths.  </p> 
    <p>I also love to travel, to write and trying out new things to eat, specially from other parts of the world! </p>
   </p>
@@ -562,28 +562,61 @@
               <span>Nov 2024 – Dec 2024</span>
 
               <p class="timeline-text">
-    -Conducted in-depth analysis of semi-structured JSON datasets from Yelp's business, reviews, and user data using MongoDB.<br>
+ -Modeled Yelp users, businesses, and reviews across MongoDB and PostgreSQL to compare document vs relational schemas and join strategies.
 
--Built a sentiment analysis pipeline with text indexing to uncover trends in customer feedback, enhancing business insights.<br>
+-Wrote MongoDB aggregation pipelines (via PyMongo) for geospatial filters, city/state rollups, and keyword-based “to_avoid” review flags using text search.
 
--Optimized MongoDB aggregation pipelines to calculate city-wise performance metrics, ensuring fast and efficient data retrieval.
+-Built SQL queries and joins in PostgreSQL to mirror MongoDB lookups and analyze performance differences with EXPLAIN ANALYZE.
+
+-Sampled data into pandas to study missingness, explode categories, and construct cleaner business feature tables for downstream analysis.
               </p>
 
             </li>
 
             <li class="timeline-item">
 
-              <h4 class="h4 timeline-item-title">Energy Sensor Data Transformation Project</h4>
+              <h4 class="h4 timeline-item-title">Campus Sensor Data Cleaning and Time-Series Interpolation in PostgreSQL</h4>
 
 
               <span>Oct 2024 – Nov 2024</span>
 
               <p class="timeline-text">
--Designed and implemented ETL pipelines to clean and transform a pre of sensor data, handling billions of data points.<br>
+-Cleaned and standardized campus HVAC and energy sensor data in PostgreSQL, resolving inconsistent units and messy building/location metadata.
 
--Leveraged PostgreSQL to construct scalable queries and optimized metadata processing for effective storage and retrieval.<br>
 
--Detected and addressed data quality issues using advanced statistical filtering methods like HampelX84, improving the reliability of energy management insights.
+-Used SQL (including JSON extraction) to explore schema, validate key relationships, and produce analysis-ready sensor tables.
+
+-Implemented robust outlier detection and winsorization with median/MAD to stabilize noisy sensor readings.
+
+
+-Built regular 15-minute time-series grids using GENERATE_SERIES and window functions with forward/backward fills and linear interpolation for missing data.
+
+
+              </p>
+
+            </li>
+                <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Streaming Analysis(ML) </h4>
+      
+
+              <span>Nov 2024 – Dec 2024</span>
+
+              <p class="timeline-text">
+-Engineered a churn label from Netflix user subscription data using join/last-payment dates and computed overall churn rates.
+
+
+-Built churn prediction models in Python with pandas and scikit-learn, including MLP neural networks, decision trees, and tuned random forests with GridSearchCV and feature importance.
+
+
+-Reduced feature space with PCA and performed customer segmentation using K-Means clustering.
+
+
+-Used IsolationForest to flag high-risk churn users and visualized churn patterns by country, age, device, and cluster with matplotlib/seaborn.
+
+
+
+
               </p>
 
             </li>
@@ -615,12 +648,9 @@
 
 -Ingested Google N-grams and WordNet; implemented TimeSeries/NGramMap with HashMap/TreeMap, normalized frequencies, and efficient year-range aggregation.<br>
 
-
 -Modeled WordNet as a synset DAG; computed hyponyms via BFS/DFS + set unions; cached results to avoid repeated traversals.<br>
 
-
 -Exposed endpoints with lightweight Java web handlers (Spark/Jetty scaffold), returning JSON for frequency-filtered hyponyms across time windows.<br>
-
 
 -Wrote JUnit tests; profiled asymptotics; reduced I/O via memoization and precomputed indices.
               </p>
@@ -635,13 +665,15 @@
               <span>Nov 2023 – Nov 2023</span>
 
               <p class="timeline-text">
--Built an end-to-end spam filter: cleaned raw emails and normalized text using regex, lowercasing, stop-word removal, and stemming/lemmatization.<br>
+-Loaded and cleaned labeled spam/ham emails in pandas (lowercasing, missing-text imputation).
 
--Turned text into signals: bag-of-words and TF-IDF with sparse matrices; pruned rare terms and did chi-square feature selection.<br>
+-Explored keyword patterns in spam vs ham using custom binary word indicators and seaborn visualizations.
 
--Trained and tuned models: Multinomial Naive Bayes and L2-regularized Logistic Regression with k-fold CV and class weights.<br>
+-Engineered a feature matrix with a words_in_texts function capturing presence of selected terms.
 
--Measured what matters: precision/recall, F1, ROC-AUC; calibration checks, confusion matrix, and error analysis to refine features.
+-Trained and evaluated a scikit-learn logistic regression spam classifier vs a naive baseline using accuracy, precision, recall, and false-positive rate.
+
+
               </p>
 
             </li>
@@ -683,7 +715,7 @@
             </li>
 
             <li class="filter-item">
-              <button data-filter-btn>HHS / Research</button>
+              <button data-filter-btn>U.S Health Department / Research</button>
             </li>
 
             <li class="filter-item">
@@ -715,7 +747,7 @@
               </li>
 
               <li class="select-item">
-                <button data-select-item>HHS / Research</button>
+                <button data-select-item>U.S. Health Department / Research</button>
               </li>
 
               <li class="select-item">
@@ -756,7 +788,7 @@
 
 
 
-<li class="project-item active" data-filter-item data-category="hhs / research">
+<li class="project-item active" data-filter-item data-category="u.s. health department / research">
   <a class="project-link"
      href="https://github.com/Alejandro-Rodas/AlejandroRodas.github.io/blob/main/Berkeley_DDProgeam_research.ipynb"
      target="_blank" rel="noopener" aria-label="Open HHS Research on GitHub">
@@ -769,7 +801,7 @@
   </a>
 </li>
 
-            <li class="project-item active" data-filter-item data-category="hhs / research">
+            <li class="project-item active" data-filter-item data-category="u.s. health department / research">
   <a class="project-link"
      href="https://github.com/Alejandro-Rodas/AlejandroRodas.github.io/blob/main/USHHS_research.ipynb"
      target="_blank" rel="noopener" aria-label="Open HHS Research on GitHub">
@@ -826,7 +858,7 @@
   </a>
 </li>
 
-  <li class="project-item active" data-filter-item data-category="berkeley financial office (fao)">
+  <li class="project-item active" data-filter-item data-category="projects">
   <a class="project-link"
      href="https://github.com/Alejandro-Rodas/AlejandroRodas.github.io/blob/main/TitanicSurvivalCode.ipynb"
      target="_blank" rel="noopener" aria-label="Open HHS Research on GitHub">
